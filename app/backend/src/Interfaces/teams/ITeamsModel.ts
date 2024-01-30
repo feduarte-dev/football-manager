@@ -1,5 +1,4 @@
-import { ICRUDModel } from '../ICRUDModel';
-import { ITeams } from './ITeams';
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ITeamsModel extends ICRUDModel<ITeams> {}
+export interface ITeamsModel<T> {
+  getAllTeams(): Promise<T[]>,
+  getTeamById(id: number): Promise<T | null>
+}

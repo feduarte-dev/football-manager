@@ -1,8 +1,8 @@
-import SequelizeTeams from '../database/models/teamsModel';
+import SequelizeTeams from '../database/models/teams.model';
 import { ITeamsModel } from '../Interfaces/teams/ITeamsModel';
 import { ITeams } from '../Interfaces/teams/ITeams';
 
-export default class TeamsModel implements ITeamsModel {
+export default class TeamsModel implements ITeamsModel<ITeams> {
   private model = SequelizeTeams;
 
   async getAllTeams(): Promise<ITeams[]> {
