@@ -2,6 +2,8 @@ import * as sinon from 'sinon';
 import { expect } from 'chai';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 import JWT from '../utils/tokenValidation';
+import { JwtPayload } from 'jsonwebtoken';
+
 
 describe('mapStatusHTTP', () => {
   it('should return 200 for SUCCESSFUL', () => {
@@ -52,29 +54,19 @@ describe('JWT', () => {
 
   describe('verify', () => {
     it('should return JwtPayload if the token is valid', () => {
-      type ResultType = {
-        payload: string,
-        iat: number,
-        exp: number
-      }
       const payload = 'admin';
       const token = JWT.sign({ payload });
 
-      const result = JWT.verify(token) as ResultType;
+      const result = JWT.verify(token) as JwtPayload;
 
       expect(result.payload).to.equal(payload);
     });
 
     it('should return an error message if the token is invalid', () => {
-      type ResultType = {
-        payload: string,
-        iat: number,
-        exp: number
-      }
       const payload = 'admin';
-      const token = JWT.sign({ payload });
+      JWT.sign({ payload });
 
-      const result = JWT.verify('invalid') as ResultType;
+      const result = JWT.verify('invalid') as JwtPayload;
       
       expect(result.payload).not.to.equal(payload);
     });

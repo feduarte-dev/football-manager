@@ -1,4 +1,5 @@
 import * as bcrypt from 'bcryptjs';
+import { JwtPayload } from 'jsonwebtoken';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import { IUser } from '../Interfaces/user/IUser';
 import { IUserModel } from '../Interfaces/user/IUserModel';
@@ -32,7 +33,7 @@ export default class UserService {
 
   public async checkRole(authorization: string): Promise<ServiceResponse<IRole>> {
     const token = authorization.split(' ');
-    const { payload } = this.jwt.verify(token[1]) as any; // CORRIGIR
+    const { payload } = this.jwt.verify(token[1]) as JwtPayload;
 
     if (!payload) {
       return { status: 'UNAUTHORIZED', data: { message: 'Token must be a valid token' },
