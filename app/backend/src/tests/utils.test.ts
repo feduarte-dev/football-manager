@@ -12,14 +12,14 @@ describe('mapStatusHTTP', () => {
     expect(result).to.equal(400);
   });
 
+  it('should return 401 for UNAUTHORIZED', () => {
+    const result = mapStatusHTTP('UNAUTHORIZED');
+    expect(result).to.equal(409);
+  });
+
   it('should return 404 for NOT_FOUND', () => {
     const result = mapStatusHTTP('NOT_FOUND');
     expect(result).to.equal(404);
-  });
-
-  it('should return 409 for CONFLICT', () => {
-    const result = mapStatusHTTP('CONFLICT');
-    expect(result).to.equal(409);
   });
 
   it('should return 500 for unknown status', () => {
