@@ -35,10 +35,6 @@ export default class UserService {
     const token = authorization.split(' ');
     const { payload } = this.jwt.verify(token[1]) as JwtPayload;
 
-    if (!payload) {
-      return { status: 'UNAUTHORIZED', data: { message: 'Token must be a valid token' },
-      };
-    }
     return { status: 'SUCCESSFUL', data: { role: payload } };
   }
 }

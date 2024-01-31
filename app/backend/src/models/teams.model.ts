@@ -12,6 +12,11 @@ export default class TeamsModel implements ITeamsModel<ITeams> {
 
   async getTeamById(id: number): Promise<ITeams | null> {
     const dbData = await this.model.findByPk(id);
+
+    if (!dbData) {
+      return null;
+    }
+
     return dbData;
   }
 }

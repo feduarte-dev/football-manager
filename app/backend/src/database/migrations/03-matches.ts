@@ -33,6 +33,7 @@ export default {
       },
       in_progress: {
         type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
     });
   },
