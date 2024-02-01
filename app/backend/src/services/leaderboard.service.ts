@@ -13,6 +13,7 @@ export default class LeaderboardService {
     const teams = await this.teamsModel.getAllTeams();
     const leaderboard = teams.map((team) => getLeaderboard(team, matches, type));
     getSortedLeaderboard(leaderboard);
+
     return { status: 'SUCCESSFUL', data: leaderboard };
   }
 }

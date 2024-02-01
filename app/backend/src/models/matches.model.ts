@@ -14,6 +14,7 @@ export default class MatchesModel implements IMatchesModel<IMatches> {
         { model: SequelizeTeams, as: 'awayTeam', attributes: { exclude: ['id'] } },
       ],
     });
+
     return dbData;
   }
 
@@ -30,6 +31,7 @@ export default class MatchesModel implements IMatchesModel<IMatches> {
 
   async endMatch(id: number) {
     const [affectedRows] = await this.model.update({ inProgress: false }, { where: { id } });
+
     if (affectedRows === 0) {
       return null;
     }
@@ -37,12 +39,13 @@ export default class MatchesModel implements IMatchesModel<IMatches> {
 
   async createNewMatch(matchData: IMatches) {
     const dbData = await this.model.create(matchData);
+
     return dbData;
   }
 
-  async updateGoals(id: number, { homeTeamGoals, awayTeamGoals }: IGoals)
-    : Promise<string> {
+  async updateGoals(id: number, { homeTeamGoals, awayTeamGoals }: IGoals) : Promise<string> {
     await this.model.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+
     return 'Match Updated!';
   }
 }

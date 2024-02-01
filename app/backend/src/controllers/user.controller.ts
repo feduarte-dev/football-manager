@@ -7,13 +7,17 @@ export default class UserController {
 
   public async login(req: Request, res: Response) {
     const loginData = req.body;
+
     const { status, data } = await this.userService.login(loginData);
+
     return res.status(mapStatusHTTP(status)).json(data);
   }
 
   public async checkRole(req: Request, res: Response) {
     const { authorization } = req.headers;
+
     const { status, data } = await this.userService.checkRole(authorization || '');
+
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }

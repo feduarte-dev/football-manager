@@ -17,17 +17,15 @@ export default class UserService {
     const user = await this.userModel.login(email);
     const EMAIL_REGEX = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
 
-    if (
-      !user || !bcrypt.compareSync(password, user.password)
-      || password.length < 6 || !email.match(EMAIL_REGEX)
-    ) {
+    if (!user || !bcrypt.compareSync(password, user.password)
+        || password.length < 6 || !email.match(EMAIL_REGEX)) {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' },
       };
     }
 
     const payload = user.role;
-
     const token = this.jwt.sign({ payload });
+
     return { status: 'SUCCESSFUL', data: { token } };
   }
 
