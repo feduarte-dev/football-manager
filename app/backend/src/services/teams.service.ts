@@ -4,7 +4,7 @@ import TeamsModel from '../models/teams.model';
 import { ITeams } from '../Interfaces/teams/ITeams';
 
 export default class TeamsService {
-  constructor(private teamsModel: ITeamsModel<ITeams> = new TeamsModel()) {}
+  constructor(private teamsModel: ITeamsModel = new TeamsModel()) {}
 
   public async getAllTeams(): Promise<ServiceResponse<ITeams[]>> {
     const teams = await this.teamsModel.getAllTeams();

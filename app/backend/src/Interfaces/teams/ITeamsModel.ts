@@ -1,4 +1,6 @@
-export interface ITeamsModel<T> {
-  getAllTeams(): Promise<T[]>;
-  getTeamById(id: number): Promise<T | null>;
+import { ITeams } from './ITeams';
+
+export interface ITeamsModel {
+  getAllTeams(): Promise<ITeams[]>;
+  getTeamById(id: number): Promise<ITeams | null>;
 }

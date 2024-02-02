@@ -1,7 +1,9 @@
+import { ICreatedResponse } from '../Interfaces/user';
 import { IGoals } from '../Interfaces/matches/IGoals';
 import TeamsModel from '../models/teams.model';
 import { IMatches } from '../Interfaces/matches/iMatches';
 import MatchesModel from '../models/matches.model';
+import { ServiceResponse } from '../Interfaces/ServiceResponse';
 
 export default class MatchesService {
   constructor(
@@ -9,25 +11,25 @@ export default class MatchesService {
     private teamsModel = new TeamsModel(),
   ) {}
 
-  public async getAllMatches() {
+  public async getAllMatches(): Promise<ServiceResponse<IMatches[]>> {
     const matches = await this.matchesModel.getAllMatches();
 
     return { status: 'SUCCESSFUL', data: matches };
   }
 
-  public async getMatchesByProgress(inProgress: boolean) {
+  public async getMatchesByProgress(inProgress: boolean): Promise<ServiceResponse<IMatches[]>> {
     const matches = await this.matchesModel.getMatchesByProgress(inProgress);
 
     return { status: 'SUCCESSFUL', data: matches };
   }
 
-  public async endMatch(id: number) {
+  public async endMatch(id: number): Promise<ServiceResponse<ICreatedResponse>> {
     await this.matchesModel.endMatch(id);
 
     return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
   }
 
-  public async createNewMatch(matchData: IMatches) {
+  public async createNewMatch(matchData: IMatches): Promise<ServiceResponse<IMatches>> {
     const { homeTeamId, awayTeamId } = matchData;
     const teamsArray = [homeTeamId, awayTeamId];
 
@@ -51,7 +53,7 @@ export default class MatchesService {
     return { status: 'CREATED', data: newMatch };
   }
 
-  public async updateGoals(id: number, goals: IGoals) {
+  public async updateGoals(id: number, goals: IGoals): Promise<ServiceResponse<string>> {
     const updatedMatch = await this.matchesModel.updateGoals(id, goals);
 
     return { status: 'SUCCESSFUL', data: updatedMatch };

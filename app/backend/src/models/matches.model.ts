@@ -4,7 +4,7 @@ import { IMatches } from '../Interfaces/matches/iMatches';
 import { IMatchesModel } from '../Interfaces/matches/IMatchesModel';
 import { IGoals } from '../Interfaces/matches/IGoals';
 
-export default class MatchesModel implements IMatchesModel<IMatches> {
+export default class MatchesModel implements IMatchesModel {
   private model = SequelizeMatches;
 
   async getAllMatches(): Promise<IMatches[]> {
@@ -18,7 +18,7 @@ export default class MatchesModel implements IMatchesModel<IMatches> {
     return dbData;
   }
 
-  async getMatchesByProgress(inProgress: boolean): Promise<IMatches[]> {
+  async getMatchesByProgress(inProgress: boolean) {
     const dbData = await this.model.findAll({ where: { inProgress },
       include: [
         { model: SequelizeTeams, as: 'homeTeam', attributes: { exclude: ['id'] } },
@@ -43,7 +43,7 @@ export default class MatchesModel implements IMatchesModel<IMatches> {
     return dbData;
   }
 
-  async updateGoals(id: number, { homeTeamGoals, awayTeamGoals }: IGoals) : Promise<string> {
+  async updateGoals(id: number, { homeTeamGoals, awayTeamGoals }: IGoals) {
     await this.model.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
 
     return 'Match Updated!';

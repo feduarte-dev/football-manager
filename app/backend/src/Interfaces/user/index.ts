@@ -5,3 +5,7 @@ export interface IToken {
 export interface IRole {
   role: string
 }
+
+export interface ICreatedResponse {
+  message: string
+}
