@@ -1,10 +1,10 @@
-# README: Quidditch World Cup
+# README: Football Manager
 
 <img src="assets/quidditch-world-cup.png" alt="page" title="page" width=100%>
 
 ## Project Description
 
-This project aims to bring together all the knowledge acquired so far! The proposal is the creation of an API to be consumed by an front-end. Initially, the application is an informative website about football matches and standings. However, later on, I plan to turn it into a tribute to Harry Potter, adapting it to the wizarding world and transforming football into Quidditch.
+This project aims to bring together all the knowledge acquired so far! The proposal is the creation of an API to be consumed by an front-end. Initially, the application is an informative website about football matches and standings.
 
 ### Technologies
 
