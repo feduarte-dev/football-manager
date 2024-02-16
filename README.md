@@ -1,6 +1,6 @@
 # README: Football Manager
 
-<img src="assets/quidditch-world-cup.png" alt="page" title="page" width=100%>
+<img src="assets/football-manager.png" alt="page" title="page" width=100%>
 
 ## Project Description
 
