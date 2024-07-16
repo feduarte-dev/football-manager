@@ -30,7 +30,7 @@ This project aims to bring together all the knowledge acquired so far! The propo
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/feduarte-dev/quidditch-world-cup
+   git clone https://github.com/feduarte-dev/football-manager
    ```
 
 2. Navigate to the project directory:
